@@ -1,0 +1,28 @@
+name: pipeline
+
+on:
+  - push
+  - pull_request
+
+jobs:
+
+  nix-shell:
+    name: nix-shell-${{ matrix.filename }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        filename:
+          - ./hs-fhs.nix
+          - ./hs.nix
+    steps:
+
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: setup-nix
+        uses: cachix/install-nix-action@v13
+
+      - name: nix-shell-test
+        run: |
+          nix-shell --keep-going --pure --run true ${{ matrix.filename }}
