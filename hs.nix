@@ -1,5 +1,5 @@
 { sources ? import ./nix/sources.nix { }
-, pkgs ? import sources.nixpkgs { }
+, pkgs ? import sources.nixpkgs { config = { allowBroken = true; }; }
 , ghc ? "ghc8104"
 }: pkgs.mkShell {
   nativeBuildInputs = [
@@ -13,14 +13,18 @@
       cabal-install
       cabal2nix
       criterion
+      darcs
       dhall
+      diagrams
       ekg
       esqueleto
       folds
       ghcid
       gi-gtk-hs
+      gitlib-libgit2
       haskell-language-server
       HaTeX
+      hindent
       hledger-ui
       hledger-web
       hmatrix-backprop
@@ -34,12 +38,14 @@
       mergeless
       niv
       pandoc
+      recursion-schemes
       reflex-dom
       replace-megaparsec
       sbv
       servant-server
       ShellCheck
       selda-sqlite
+      servant-openapi3
       singletons
       stack
       streamly
@@ -48,6 +54,7 @@
       tree-diff
       tree-sitter-haskell
       tree-sitter-typescript
+      twitter-conduit
       unbound-generics
       wai-middleware-auth
       wai-websockets
