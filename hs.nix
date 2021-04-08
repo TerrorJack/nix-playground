@@ -4,6 +4,8 @@
 }: pkgs.mkShell {
   nativeBuildInputs = [
     (pkgs.haskell.packages."${ghc}".ghcWithPackages (ps: with ps; [
+      accelerate
+      Agda
       apecs-physics
       arithmoi
       boltzmann-samplers
@@ -18,44 +20,54 @@
       diagrams
       ekg
       esqueleto
+      fakedata
+      ffmpeg-light
       folds
+      futhark
       ghcid
       gi-gtk-hs
       gitlib-libgit2
+      hadolint
       haskell-language-server
       HaTeX
+      hgeometry
       hindent
+      hip
       hledger-ui
       hledger-web
       hmatrix-backprop
       http-client-openssl
       hnix
+      idris
       inspection-testing
       language-javascript
       linear
       llvm-hs
       mergeful
       mergeless
+      (pkgs.haskell.lib.doJailbreak monad-bayes)
       niv
       pandoc
       recursion-schemes
       reflex-dom
       replace-megaparsec
       sbv
-      servant-server
-      ShellCheck
       selda-sqlite
       servant-openapi3
+      servant-server
       singletons
       stack
       streamly
       sydtest-wai
+      tasty-smallcheck
       threepenny-gui
       tree-diff
       tree-sitter-haskell
       tree-sitter-typescript
+      trifecta
       twitter-conduit
       unbound-generics
+      unification-fd
       wai-middleware-auth
       wai-websockets
       weeder
